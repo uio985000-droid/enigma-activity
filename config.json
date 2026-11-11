@@ -1,0 +1,175 @@
+{
+    "title": "ENIGMA CONSOLE",
+    "tabs": [
+        {
+            "id": "style",
+            "label": "Response Style",
+            "th": "รูปแบบการตอบ",
+            "sections": [
+                {
+                    "no": "01", "title": "LANGUAGE", "sub": "เลือกภาษา", "mode": "single",
+                    "items": [
+                        { "id": "4f90e2e9-f8a8-4660-af84-ec51299c96ad", "emoji": "🇬🇧", "label": "English" },
+                        { "id": "8db56f68-61bd-4ce0-8699-94129c3f7adb", "emoji": "🇹🇭", "label": "ภาษาไทย" },
+                        { "id": "ba781278-66a4-4a6b-b80c-8cdd53444a53", "emoji": "🇯🇵", "label": "日本語" },
+                        { "id": "1a45adfa-5b9a-4f42-8edd-aaeccb8c553f", "emoji": "🇷🇺", "label": "Русский" },
+                        { "id": "771a98fd-beb6-42dc-933a-b820321d6a7e", "emoji": "🇻🇳", "label": "Tiếng Việt" },
+                        { "id": "6a535843-4c95-4801-896e-1a8f1ea01035", "emoji": "🇪🇸", "label": "Español" },
+                        { "id": "0695b37f-6b56-4d8e-bb31-0f9f68f27095", "emoji": "🇨🇳", "label": "中文" },
+                        { "id": "b4d0a1c3-5e2f-4c71-9a8e-1d7f3e6c2a90", "emoji": "🇮🇩", "label": "Bahasa Indonesia" },
+                        { "id": "cdedbb25-e4ae-44b0-9ce9-eba051b67fdc", "emoji": "🇧🇷", "label": "Português (BR)" }
+                    ]
+                },
+                {
+                    "no": "02", "title": "LENGTH", "sub": "ความยาวคำตอบ (เลือก 1)", "mode": "single",
+                    "items": [
+                        { "id": "bddff9bf-b942-4d46-b3e0-698fb4485bea", "emoji": "⚪", "label": "Chat Mode", "desc": "โหมดแชท · มีแต่คำพูด ไม่มีบรรยาย" },
+                        { "id": "6e7659cd-1d19-4113-aa4a-e310778f015b", "emoji": "🔵", "label": "Chatty", "desc": "สั้นมาก · ~50 คำ" },
+                        { "id": "47e4041f-72bc-40d5-9874-a6f24d73c72f", "emoji": "🟢", "label": "Short", "desc": "สั้น · ~312 คำ" },
+                        { "id": "4fbaa233-6a67-47b0-803d-6656f46ea3f0", "emoji": "🟡", "label": "Medium", "desc": "ปกติ · ~1224 คำ" },
+                        { "id": "2703b288-d939-451c-b021-08e47a6da476", "emoji": "🟠", "label": "Long", "desc": "ยาว · ~3056 คำ" },
+                        { "id": "543cdf77-af5b-45e4-b35f-20014fe0dfe4", "emoji": "🔴", "label": "Extended", "desc": "ยาวมาก · ~8092 คำ" },
+                        { "id": "7cf40192-f045-4989-98b3-ee67c6ed1d3f", "emoji": "🟣", "label": "Dynamic", "desc": "ยาว-สั้นอัตโนมัติตามเหตุการณ์" }
+                    ]
+                },
+                {
+                    "no": "03", "title": "PROSE FLOOR", "sub": "บทพูด : บรรยาย (เลือก 1)", "mode": "single",
+                    "items": [
+                        { "id": "fcd286c9-f062-413d-8495-6acd62e5e094", "emoji": "🟩", "label": "L1 Yappers", "desc": "บทพูดเยอะ ~80 : 20" },
+                        { "id": "38ced9b4-4e52-4eab-9200-005750a4b40a", "emoji": "🟧", "label": "L2 Balanced", "desc": "สมดุล ~50 : 50" },
+                        { "id": "38169cb3-fd56-457c-809b-08303b70fc92", "emoji": "🟥", "label": "L3 Novel", "desc": "บรรยายเป็นหลัก ~30 : 70" }
+                    ]
+                },
+                {
+                    "no": "04", "title": "PERSPECTIVE", "sub": "มุมมองการเล่า (เลือก 1)", "mode": "single",
+                    "items": [
+                        { "id": "a7a47190-8322-4b6e-87a5-11aa5a6f924f", "emoji": "👁️", "label": "บุคคลที่ 1" },
+                        { "id": "6a73787d-8628-4a77-b52b-d10bad9b3af6", "emoji": "👁️", "label": "บุคคลที่ 3" },
+                        { "id": "edcc1575-489f-4984-8985-07d93e891004", "emoji": "👁️", "label": "พระเจ้า" }
+                    ]
+                },
+                {
+                    "no": "05", "title": "WRITING STYLE", "sub": "สไตล์การเขียน", "mode": "multi",
+                    "items": [
+                        { "id": "1b3073c9-f5c4-4d45-b774-092779d3dfd5", "emoji": "✍️", "label": "Custom Writing", "desc": "กรอบ <writing> ใส่สไตล์ของตัวเองได้" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "engine",
+            "label": "Engine",
+            "th": "เอนจิ้น",
+            "sections": [
+                {
+                    "no": "01", "title": "ENGINE", "sub": "เลือกเอนจิ้นหลัก (เลือก 1)", "mode": "single",
+                    "items": [
+                        { "id": "f3287048-2535-432f-831d-6e277d261fa3", "emoji": "☀️", "label": "Helios", "desc": "All-rounder · สมดุลทุกด้าน" },
+                        { "id": "1104e365-1b21-4c0f-9891-2938cf640ccb", "emoji": "🌙", "label": "Luna", "desc": "Storyteller · เน้นเล่าเรื่อง ความเชื่อ/ความรู้สึกของตัวละคร" },
+                        { "id": "d0bbcfe0-f783-4bdd-a427-8276576f5ff7", "emoji": "🌌", "label": "Aether", "desc": "World Expansion · ขยายโลก สถานที่ ฝ่าย และเหตุการณ์" },
+                        { "id": "4d336849-9086-4c0e-b241-9c9ec575f03f", "emoji": "💮", "label": "Aphrodite", "desc": "Romance · สายโรแมนซ์ ความสัมพันธ์ค่อยๆ ก่อตัว" },
+                        { "id": "44ffab4c-b760-4de4-b136-65b0c5cff726", "emoji": "🏛️", "label": "Pantheon", "desc": "Debate · สภาถกเถียงหลายเสียงก่อนเขียน" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "features",
+            "label": "Features",
+            "th": "ฟีเจอร์",
+            "sections": [
+                {
+                    "no": "01", "title": "DIALOGUE COLOR", "sub": "สีบทพูด (เลือกได้ 1 หรือไม่ใช้)", "mode": "optional",
+                    "items": [
+                        { "id": "fde093fd-e7c5-48cb-b4ba-b1398727c623", "emoji": "💬", "label": "Colorizer", "desc": "สีข้อความรายตัว (ใช้แท็ก font)" },
+                        { "id": "b23d9123-e94d-47b2-bace-389790be8454", "emoji": "🌈", "label": "Gradient", "desc": "สีแบบไล่เฉด (ใช้ CSS gradient)" }
+                    ]
+                },
+                {
+                    "no": "02", "title": "EXTENSIONS", "sub": "ฟีเจอร์เสริม", "mode": "multi",
+                    "items": [
+                        { "id": "409d5a55-d385-4c22-ad12-d0e9c465c2cd", "emoji": "😮‍💨", "label": "Subtext", "desc": "สปอยความคิดตัวละครเป็นกราฟ" },
+                        { "id": "c8890ad2-ad9c-4828-bff0-c76007230e0d", "emoji": "🌫️", "label": "Ambient Scenes", "desc": "มุมมองตัวละครอื่น/ชีวิตนอกจอ" },
+                        { "id": "b123f186-f9b4-4644-8513-dd05c8ded3a6", "emoji": "💳", "label": "Quote Banner", "desc": "กล่องคำพูดสไตล์วิชวลโนเวล" },
+                        { "id": "f247961d-5dd9-48d1-8621-528a8a247950", "emoji": "🔊", "label": "Comment Section", "desc": "คอมเมนต์ประชาชนท้ายคำตอบ" }
+                    ]
+                },
+                {
+                    "no": "03", "title": "TOOLS", "sub": "เครื่องมือเฉพาะกิจ", "mode": "multi",
+                    "items": [
+                        { "id": "0e93eef5-4d96-472f-8893-f492f9aa277f", "emoji": "🧠", "label": "Next Scenario", "desc": "ปุ่มเลือกเหตุการณ์ถัดไป · ต้องติดตั้ง st-clickable-inputs" },
+                        { "id": "0029d8b5-68ca-46f1-9bea-4d2af62e12e5", "emoji": "🎮", "label": "Character Design", "desc": "ออกแบบการ์ดตัวละคร · ไม่ใช้แล้วปิด เปลืองโทเค็น" },
+                        { "id": "b8035c18-d3e5-4c24-a0f9-5b1028d14387", "emoji": "📝", "label": "First Message", "desc": "ไอเดียข้อความแรก · ไม่ใช้แล้วปิด เปลืองโทเค็น" },
+                        { "id": "6441ca7b-426a-485b-a7d6-e0b6cc4fb86d", "emoji": "📱", "label": "Phone", "desc": "จำลองโทรศัพท์ · ใช้กับ Phone Simulation extension" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mods",
+            "label": "Mods",
+            "th": "ม็อด",
+            "sections": [
+                {
+                    "no": "01", "title": "PACING", "sub": "จังหวะเรื่อง", "mode": "multi",
+                    "items": [
+                        { "id": "8f5a9716-0c04-45bf-bd62-c5d06bdb8409", "emoji": "💕", "label": "Slow-Burn", "desc": "เดินเรื่องช้า ไม่ข้ามเวลา" },
+                        { "id": "0798299f-4e8e-40f1-874c-578fe90621c3", "emoji": "💨", "label": "Fast-paced", "desc": "เดินเรื่องไว ตัดช่วงว่าง" }
+                    ]
+                },
+                {
+                    "no": "02", "title": "FUN", "sub": "โหมดสนุกๆ", "mode": "multi",
+                    "items": [
+                        { "id": "2e136cdc-af08-437a-869c-4ffb5f40d630", "emoji": "🤪", "label": "EX 2.5", "desc": "เรื่องเพี้ยน เหนือเหตุผล" },
+                        { "id": "24d38209-0186-4889-8b86-7c0365a7f815", "emoji": "😸", "label": "Beast Mode", "desc": "ตัวละครพูดเป็นเสียงสัตว์" },
+                        { "id": "4943cb1a-1be3-47a0-9f51-f47ad14287e9", "emoji": "🫪", "label": "Polyglot Quest", "desc": "เควสฝึกภาษา" }
+                    ]
+                },
+                {
+                    "no": "03", "title": "CONTROL", "sub": "ควบคุมเรื่อง", "mode": "multi",
+                    "items": [
+                        { "id": "736f6dad-8e6b-46ef-a758-c4fd025fdf0f", "emoji": "🔏", "label": "Absolute Order", "desc": "ผลลัพธ์ของ {{user}} สำเร็จเสมอ แต่มีราคา" },
+                        { "id": "71531378-1469-4985-a377-5c706b95e061", "emoji": "🗨️", "label": "Spectators", "desc": "{{user}} ไม่มีตัวตนในโลก" },
+                        { "id": "4a650781-4aea-4e5a-9d58-ebc1ea9cac89", "emoji": "🎬", "label": "Director Cuts", "desc": "ผู้คุมเนื้อเรื่อง สั่งตัดฉาก/เหตุการณ์" },
+                        { "id": "2dcc323b-d4c2-406c-a60d-0ea3ed588107", "emoji": "📣", "label": "ElevenLabs TTS", "desc": "แท็กอารมณ์เสียง v3" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "settings",
+            "label": "Settings",
+            "th": "ตั้งค่า",
+            "sections": [
+                {
+                    "no": "01", "title": "CORE", "sub": "แกนหลักของพรีเซ็ต", "mode": "multi",
+                    "items": [
+                        { "id": "80d8fd1f-74a4-4fc2-9cd2-97ed8382161b", "emoji": "⏱️", "label": "Time Awareness", "desc": "นาฬิกา §CLK§ และสถานะฉาก §STG§" },
+                        { "id": "b7e3a1c4-31a0-4c8e-9f21-0e5f3a7d3101", "emoji": "🌡️", "label": "Emotional Flow", "desc": "อารมณ์มีแรงเฉื่อย ร้อน/เย็นตามเวลา" },
+                        { "id": "e0cb3777-2d6c-4e38-ac8b-273814c67c1c", "emoji": "📜", "label": "Era Logic", "desc": "กันของผิดยุค" },
+                        { "id": "67082d77-f9b5-4a15-9ad2-cd90a7e39cfd", "emoji": "💪", "label": "Meta-Physical", "desc": "ตรวจความเป็นไปได้ของร่างกายและร่องรอยที่เหลือ" },
+                        { "id": "11a7b86e-ae02-48ad-8556-662f2c32e928", "emoji": "📺", "label": "Scene Hierarchy", "desc": "ไม่ให้ตัวละครหลักผูกขาดซีน" },
+                        { "id": "01bf7874-4237-415a-888d-2f8d3762693e", "emoji": "📐", "label": "Engagement Reader", "desc": "อ่านจังหวะการตอบของผู้เล่น" },
+                        { "id": "19f4f40a-f9b0-440c-a313-f63879bda72b", "emoji": "🔇", "label": "Anti-Slop", "desc": "ลดสำนวนซ้ำซาก" },
+                        { "id": "b9d6fa16-383b-4a84-9995-cb8b05ed6366", "emoji": "🛡️", "label": "Syntax", "desc": "ไม่ใช้วงเล็บ ไม่ใช้ประโยคปฏิเสธ-นิยาม" },
+                        { "id": "9254ffd5-b503-4de5-8af5-b450de71fbce", "emoji": "🧹", "label": "Craft Guard", "desc": "ตรวจร้อยแต่งท้ายก่อนส่ง" }
+                    ]
+                },
+                {
+                    "no": "02", "title": "WORLD", "sub": "โลกและตัวประกอบ", "mode": "multi",
+                    "items": [
+                        { "id": "f53691ca-bcd6-4ed5-9560-18a51f54665e", "emoji": "🔴", "label": "NPCs", "desc": "ระบบ NPC อัตโนมัติ" },
+                        { "id": "f450e4fd-6cf4-49d0-8982-b58a0391418a", "emoji": "🔴", "label": "NPC Core", "desc": "ย้ำกฎ NPC ท้ายพรอมต์" },
+                        { "id": "734105b7-80c0-403e-82bb-d363d8a54152", "emoji": "💾", "label": "Canon Extender", "desc": "ดึง canon ของจักรวาลจริงมาเสริม" },
+                        { "id": "57e6f8b8-0082-4c5b-a618-b4ccb1090c33", "emoji": "🟰", "label": "Normalization", "desc": "ถือลักษณะตัวละครเป็นเรื่องปกติในโลก" },
+                        { "id": "0a3673d0-97ba-4f4a-a81c-5981713574e5", "emoji": "♂️", "label": "Gender Detail", "desc": "รายละเอียดเพศ/สรีระ" }
+                    ]
+                },
+                {
+                    "no": "03", "title": "VAULT", "sub": "บันทึก/โหลดชุดตั้งค่า", "mode": "vault",
+                    "items": []
+                }
+            ]
+        }
+    ]
+                        }
