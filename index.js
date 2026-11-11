@@ -3,7 +3,6 @@
  * Nothing in the preset text is changed. */
 
 const EXT_ID = 'enigma-console';
-const LS_POS = `${EXT_ID}:pos`;
 const LS_TAB = `${EXT_ID}:tab`;
 const LS_VAULT = `${EXT_ID}:vault`;
 const DEFAULT_DUMMY = 100001;
@@ -282,6 +281,108 @@ function renderTabs(mod) {
             els.body.scrollTop = 0;
         },
     }, h('span', { class: 'en-tab-en' }, tab.label), h('span', { class: 'en-tab-th' }, tab.th))));
+}
+
+/* ---------- open / close ---------- */
+
+async function ensureConfig() {
+    if (CFG) return CFG;
+    const res = await fetch(new URL('./config.json', import.meta.url));
+    if (!res.ok) throw new Error(`config.json ${res.status}`);
+    CFG = await res.json();
+    activeTab = clamp(Number(lsGet(LS_TAB, 0)) || 0, 0, CFG.tabs.length - 1);
+    return CFG;
+}
+
+async function openPanel() {
+    els.panel.classList.add('open');
+    topLayer(els.panel, true);
+    els.launcher.classList.add('active');
+    try {
+        await ensureConfig();
+        const mod = await loadMod();
+        renderTabs(mod);
+        renderBody(mod);
+    } catch (err) {
+        console.error('[Enigma Console]', err);
+        els.body.replaceChildren(h('div', { class: 'en-empty' }, `เปิดไม่สำเร็จ: ${err?.message || err}`));
+        setStatus('เกิดข้อผิดพลาด ดู Console ของเบราว์เซอร์', 'err');
+    }
+}
+
+function closePanel() {
+    els.panel.classList.remove('open');
+    topLayer(els.panel, false);
+    els.launcher.classList.remove('active');
+    els.info?.classList.remove('open');
+}
+
+function togglePanel() {
+    if (els.panel.classList.contains('open')) closePanel();
+    else openPanel();
+}
+
+/* ---------- top layer (immune to transformed/zero-height ancestors) ---------- */
+
+function topLayer(el, on) {
+    try {
+        if (typeof el.showPopover !== 'function') return;
+        if (!el.hasAttribute('popover')) el.setAttribute('popover', 'manual');
+        const open = el.matches(':popover-open');
+        if (on && !open) el.showPopover();
+        else if (!on && open) el.hidePopover();
+    } catch { /* older browsers: normal fixed positioning */ }
+}
+
+/* ---------- boot ---------- */
+
+function buildUI() {
+    const launcher = h('button', {
+        id: 'enigma-launcher', class: 'en-launcher', type: 'button',
+        'aria-label': 'Enigma Console', title: 'Enigma Console', html: pentagram('enL', 34),
+    });
+
+    const tabs = h('div', { class: 'en-tabs' });
+    const body = h('div', { class: 'en-body' });
+    const info = h('div', { class: 'en-info' });
+    const status = h('div', { class: 'en-status' }, 'Enigma Console');
+    const panel = h('div', { id: 'enigma-panel', class: 'en-panel' },
+        h('div', { class: 'en-grip' }),
+        h('div', { class: 'en-head' },
+            h('span', { class: 'en-logo', html: pentagram('enH', 22) }),
+            h('span', { class: 'en-title' }, 'ENIGMA CONSOLE'),
+            h('button', { class: 'en-close', type: 'button', 'aria-label': 'close', onclick: closePanel }, '✕'),
+        ),
+        tabs, body, status, info,
+    );
+
+    document.body.append(launcher, panel);
+    els = { launcher, panel, tabs, body, info, status };
+    launcher.addEventListener('click', togglePanel);
+
+    // Top-layer (popover) elements get UA defaults; neutralise them inline.
+    Object.assign(launcher.style, { top: 'auto', right: 'auto', left: '8px', bottom: '140px', margin: '0', overflow: 'visible', touchAction: 'manipulation' });
+    Object.assign(panel.style, { top: 'auto', margin: '0', height: 'auto', padding: '0', overflow: 'hidden', borderWidth: '2px 0 0 0', width: 'min(100%, 720px)' });
+    launcher.setAttribute('popover', 'manual');
+    panel.setAttribute('popover', 'manual');
+    topLayer(launcher, true);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+}
+
+function boot() {
+    if (document.getElementById('enigma-launcher')) return;
+    try {
+        buildUI();
+        window.EnigmaConsole = { open: openPanel, close: closePanel, version: '1.1.0' };
+    } catch (err) {
+        console.error('[Enigma Console] boot failed', err);
+    }
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else boot();span', { class: 'en-tab-en' }, tab.label), h('span', { class: 'en-tab-th' }, tab.th))));
 }
 
 /* ---------- open / close ---------- */
