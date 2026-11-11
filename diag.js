@@ -3,7 +3,7 @@
 const say = (kind, msg) => {
     try {
         if (window.toastr && typeof window.toastr[kind] === 'function') {
-            window.toastr[kind](msg, 'Enigma', { timeOut: 20000, extendedTimeOut: 20000 });
+            window.toastr[kind](msg, 'Enigma', { timeOut: 12000, extendedTimeOut: 12000 });
             return;
         }
     } catch { /* fall through to banner */ }
@@ -11,40 +11,26 @@ const say = (kind, msg) => {
     d.textContent = msg;
     d.style.cssText = 'position:fixed;left:8px;right:8px;top:80px;z-index:2147483647;padding:10px 12px;border-radius:8px;background:#ff2d55;color:#fff;font:14px sans-serif';
     (document.body || document.documentElement).append(d);
-    setTimeout(() => d.remove(), 20000);
+    setTimeout(() => d.remove(), 12000);
 };
 
 import('./index.js').then(() => {
-    const old = document.getElementById('enigma-launcher');
-    if (!old) {
+    const el = document.getElementById('enigma-launcher');
+    if (!el) {
         say('warning', 'Enigma: โหลด index.js แล้ว แต่ไม่มีปุ่ม');
         return;
     }
-
-    // Replace the launcher with a clean copy (drops the pointer handlers) and use a plain click.
-    const el = old.cloneNode(true);
-    old.replaceWith(el);
-    el.style.setProperty('position', 'fixed', 'important');
-    el.style.setProperty('top', '45%', 'important');
-    el.style.setProperty('left', '6px', 'important');
-    el.style.setProperty('bottom', 'auto', 'important');
-    el.style.setProperty('display', 'flex', 'important');
-    el.style.setProperty('z-index', '2147483647', 'important');
-    el.style.setProperty('touch-action', 'manipulation', 'important');
-
+    // Report where the panel ends up after each tap (read-only).
     el.addEventListener('click', () => {
-        const p = document.getElementById('enigma-panel');
-        if (!p) {
-            say('error', 'Enigma: ไม่พบแผง');
-            return;
-        }
-        if (p.classList.contains('open')) window.EnigmaConsole.close();
-        else window.EnigmaConsole.open();
-        const r = p.getBoundingClientRect();
-        const cs = getComputedStyle(p);
-        say('info', `Enigma: กดแล้ว open=${p.classList.contains('open')} display=${cs.display} top=${Math.round(r.top)} สูง=${Math.round(r.height)} z=${cs.zIndex}`);
+        setTimeout(() => {
+            const p = document.getElementById('enigma-panel');
+            if (!p) return;
+            const r = p.getBoundingClientRect();
+            const l = el.getBoundingClientRect();
+            const layer = typeof p.matches === 'function' && p.matches(':popover-open');
+            say('info', `Enigma: open=${p.classList.contains('open')} แผง top=${Math.round(r.top)} สูง=${Math.round(r.height)} ปุ่ม y=${Math.round(l.top)} toplayer=${layer} จอสูง=${window.innerHeight}`);
+        }, 500);
     });
-
     say('success', 'Enigma: พร้อมใช้งาน — แตะปุ่มดาวเพื่อเปิดแผง');
 }).catch(err => {
     say('error', 'Enigma: index.js ใช้งานไม่ได้ — ' + (err && err.message ? err.message : err));
