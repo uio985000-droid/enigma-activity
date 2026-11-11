@@ -14,22 +14,38 @@ const say = (kind, msg) => {
     setTimeout(() => d.remove(), 20000);
 };
 
-say('info', 'Enigma: ขั้น 1 — สคริปต์ถูกโหลดแล้ว');
-
 import('./index.js').then(() => {
-    const el = document.getElementById('enigma-launcher');
-    if (!el) {
+    const old = document.getElementById('enigma-launcher');
+    if (!old) {
         say('warning', 'Enigma: โหลด index.js แล้ว แต่ไม่มีปุ่ม');
         return;
     }
+
+    // Replace the launcher with a clean copy (drops the pointer handlers) and use a plain click.
+    const el = old.cloneNode(true);
+    old.replaceWith(el);
     el.style.setProperty('position', 'fixed', 'important');
     el.style.setProperty('top', '45%', 'important');
     el.style.setProperty('left', '6px', 'important');
     el.style.setProperty('bottom', 'auto', 'important');
     el.style.setProperty('display', 'flex', 'important');
     el.style.setProperty('z-index', '2147483647', 'important');
-    const r = el.getBoundingClientRect();
-    say('success', `Enigma: ขั้น 2 — สร้างปุ่มแล้ว ตำแหน่ง x=${Math.round(r.left)} y=${Math.round(r.top)} ขนาด ${Math.round(r.width)}x${Math.round(r.height)}`);
+    el.style.setProperty('touch-action', 'manipulation', 'important');
+
+    el.addEventListener('click', () => {
+        const p = document.getElementById('enigma-panel');
+        if (!p) {
+            say('error', 'Enigma: ไม่พบแผง');
+            return;
+        }
+        if (p.classList.contains('open')) window.EnigmaConsole.close();
+        else window.EnigmaConsole.open();
+        const r = p.getBoundingClientRect();
+        const cs = getComputedStyle(p);
+        say('info', `Enigma: กดแล้ว open=${p.classList.contains('open')} display=${cs.display} top=${Math.round(r.top)} สูง=${Math.round(r.height)} z=${cs.zIndex}`);
+    });
+
+    say('success', 'Enigma: พร้อมใช้งาน — แตะปุ่มดาวเพื่อเปิดแผง');
 }).catch(err => {
     say('error', 'Enigma: index.js ใช้งานไม่ได้ — ' + (err && err.message ? err.message : err));
 });
