@@ -1,0 +1,11 @@
+{
+    "display_name": "Enigma Console",
+    "loading_order": 50,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Enigma",
+    "version": "1.0.0",
+    "homePage": ""
+}
